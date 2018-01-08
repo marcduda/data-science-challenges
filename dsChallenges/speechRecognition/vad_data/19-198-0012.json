@@ -1,0 +1,124 @@
+{
+  "speech_segments": [
+    {
+      "start_time": 0.36, 
+      "end_time": 0.54
+    }, 
+    {
+      "start_time": 0.54, 
+      "end_time": 1.17
+    }, 
+    {
+      "start_time": 1.2, 
+      "end_time": 1.45
+    }, 
+    {
+      "start_time": 1.48, 
+      "end_time": 1.82
+    }, 
+    {
+      "start_time": 1.82, 
+      "end_time": 2.0100000000000002
+    }, 
+    {
+      "start_time": 2.01, 
+      "end_time": 2.9099999999999997
+    }, 
+    {
+      "start_time": 3.54, 
+      "end_time": 3.72
+    }, 
+    {
+      "start_time": 3.72, 
+      "end_time": 3.95
+    }, 
+    {
+      "start_time": 3.95, 
+      "end_time": 4.180000000000001
+    }, 
+    {
+      "start_time": 4.18, 
+      "end_time": 4.6499999999999995
+    }, 
+    {
+      "start_time": 4.65, 
+      "end_time": 4.86
+    }, 
+    {
+      "start_time": 4.87, 
+      "end_time": 5.49
+    }, 
+    {
+      "start_time": 5.5, 
+      "end_time": 6.1
+    }, 
+    {
+      "start_time": 6.1, 
+      "end_time": 6.39
+    }, 
+    {
+      "start_time": 6.39, 
+      "end_time": 6.529999999999999
+    }, 
+    {
+      "start_time": 6.53, 
+      "end_time": 6.71
+    }, 
+    {
+      "start_time": 6.71, 
+      "end_time": 7.12
+    }, 
+    {
+      "start_time": 7.45, 
+      "end_time": 7.75
+    }, 
+    {
+      "start_time": 7.75, 
+      "end_time": 8.23
+    }, 
+    {
+      "start_time": 8.23, 
+      "end_time": 8.440000000000001
+    }, 
+    {
+      "start_time": 8.44, 
+      "end_time": 8.66
+    }, 
+    {
+      "start_time": 8.66, 
+      "end_time": 9.08
+    }, 
+    {
+      "start_time": 9.45, 
+      "end_time": 9.62
+    }, 
+    {
+      "start_time": 9.62, 
+      "end_time": 9.729999999999999
+    }, 
+    {
+      "start_time": 9.73, 
+      "end_time": 9.9
+    }, 
+    {
+      "start_time": 9.9, 
+      "end_time": 10.19
+    }, 
+    {
+      "start_time": 10.2, 
+      "end_time": 10.94
+    }, 
+    {
+      "start_time": 10.96, 
+      "end_time": 11.120000000000001
+    }, 
+    {
+      "start_time": 11.12, 
+      "end_time": 11.739999999999998
+    }, 
+    {
+      "start_time": 11.74, 
+      "end_time": 12.27
+    }
+  ]
+}

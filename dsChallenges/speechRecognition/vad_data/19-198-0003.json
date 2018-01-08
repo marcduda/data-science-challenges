@@ -1,0 +1,152 @@
+{
+  "speech_segments": [
+    {
+      "start_time": 0.53, 
+      "end_time": 0.65
+    }, 
+    {
+      "start_time": 0.65, 
+      "end_time": 1.07
+    }, 
+    {
+      "start_time": 1.08, 
+      "end_time": 1.3
+    }, 
+    {
+      "start_time": 1.3, 
+      "end_time": 1.72
+    }, 
+    {
+      "start_time": 1.76, 
+      "end_time": 1.9
+    }, 
+    {
+      "start_time": 1.9, 
+      "end_time": 2.17
+    }, 
+    {
+      "start_time": 2.17, 
+      "end_time": 2.31
+    }, 
+    {
+      "start_time": 2.31, 
+      "end_time": 2.65
+    }, 
+    {
+      "start_time": 2.68, 
+      "end_time": 2.8600000000000003
+    }, 
+    {
+      "start_time": 2.86, 
+      "end_time": 3.3499999999999996
+    }, 
+    {
+      "start_time": 3.35, 
+      "end_time": 3.68
+    }, 
+    {
+      "start_time": 3.68, 
+      "end_time": 3.89
+    }, 
+    {
+      "start_time": 3.91, 
+      "end_time": 4.46
+    }, 
+    {
+      "start_time": 4.5, 
+      "end_time": 4.77
+    }, 
+    {
+      "start_time": 4.77, 
+      "end_time": 4.8999999999999995
+    }, 
+    {
+      "start_time": 4.9, 
+      "end_time": 5.04
+    }, 
+    {
+      "start_time": 5.04, 
+      "end_time": 5.5
+    }, 
+    {
+      "start_time": 5.9, 
+      "end_time": 6.19
+    }, 
+    {
+      "start_time": 6.19, 
+      "end_time": 6.48
+    }, 
+    {
+      "start_time": 6.49, 
+      "end_time": 6.71
+    }, 
+    {
+      "start_time": 6.71, 
+      "end_time": 6.83
+    }, 
+    {
+      "start_time": 6.83, 
+      "end_time": 7.0
+    }, 
+    {
+      "start_time": 7.0, 
+      "end_time": 7.42
+    }, 
+    {
+      "start_time": 7.83, 
+      "end_time": 8.08
+    }, 
+    {
+      "start_time": 8.09, 
+      "end_time": 8.34
+    }, 
+    {
+      "start_time": 8.34, 
+      "end_time": 8.69
+    }, 
+    {
+      "start_time": 8.69, 
+      "end_time": 8.9
+    }, 
+    {
+      "start_time": 8.9, 
+      "end_time": 9.42
+    }, 
+    {
+      "start_time": 9.59, 
+      "end_time": 10.24
+    }, 
+    {
+      "start_time": 10.36, 
+      "end_time": 10.969999999999999
+    }, 
+    {
+      "start_time": 11.21, 
+      "end_time": 11.64
+    }, 
+    {
+      "start_time": 11.88, 
+      "end_time": 12.100000000000001
+    }, 
+    {
+      "start_time": 12.099999, 
+      "end_time": 12.729999000000001
+    }, 
+    {
+      "start_time": 13.0, 
+      "end_time": 13.21
+    }, 
+    {
+      "start_time": 13.21, 
+      "end_time": 13.690000000000001
+    }, 
+    {
+      "start_time": 13.69, 
+      "end_time": 14.37
+    }, 
+    {
+      "start_time": 14.37, 
+      "end_time": 15.0
+    }
+  ]
+}
