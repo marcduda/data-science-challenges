@@ -9,11 +9,6 @@ Created on Thu Oct 20 16:40:08 2016
 
 from __future__ import print_function
 import numpy as np
-import tensorflow as tf
-from six.moves import cPickle as pickle
-from six.moves import range
-from sklearn.utils import shuffle
-from sklearn.model_selection import train_test_split
 
 #import the datasets and the corresponding labels
 train_dataset = np.load("train_dataset.npy")
@@ -31,8 +26,6 @@ from keras.layers import Dense, GlobalAveragePooling2D
 from keras.preprocessing.image import ImageDataGenerator
 from sklearn import metrics
 
-#nb_train_samples = 1200
-#nb_validation_samples = 800
 nb_epoch = 10
 nb_classes = 80
 img_width, img_height = 140,140
@@ -58,14 +51,12 @@ for layer in base_model.layers:
     layer.trainable = False
     
 # compile the model 
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='categorical_crossentropy',
+              metrics=['accuracy'])
 
-train_datagen = ImageDataGenerator()#,
- #       shear_range=0.2,
- #       zoom_range=0.2,
- #       horizontal_flip=True)
- 
-test_datagen = ImageDataGenerator()#rescale=1./255
+train_datagen = ImageDataGenerator()
+test_datagen = ImageDataGenerator()
+
 #encode the labels of the data
 encoder = LabelEncoder()
 encoder.fit(train_labels.ravel())
@@ -81,7 +72,7 @@ validation_generator = test_datagen.flow(valid_dataset,y_valid)
 
 print("start model")
 history = model.fit_generator(
-    train_generator,steps_per_epoch=len(train_dataset) / 200) #1020
+    train_generator,steps_per_epoch=len(train_dataset) / 200) 
 
 #compare the results when using or not a generator for the data
 predictions_generator = model.predict_generator(validation_generator,100)

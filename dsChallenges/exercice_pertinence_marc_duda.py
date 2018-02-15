@@ -17,7 +17,7 @@ Created on Sun Jun 25 16:41:16 2017
 import numpy as np
 import re
 
-with open("/Users/marcduda/Downloads/offres.txt") as f:
+with open("offres.txt") as f:
     content = f.readlines()
     content = [x.strip() for x in content] 
     content = [x.strip('\n') for x in content] 

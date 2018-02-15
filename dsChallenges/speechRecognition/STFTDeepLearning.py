@@ -5,8 +5,7 @@ Created on Thu Nov  2 16:00:03 2017
 
 @author: marcduda
 """
-
-import nltk.data 
+ 
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle

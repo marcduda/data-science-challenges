@@ -5,7 +5,6 @@ Created on Sat Oct  7 13:41:05 2017
 
 @author: marcduda
 """
-#from dateutil import parser
 from datetime import datetime
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt

@@ -8,25 +8,25 @@ Created on Wed Oct 18 16:15:14 2017
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import SGDClassifier
 from sklearn import metrics
-from sklearn.pipeline import Pipeline, FeatureUnion
-from nltk.corpus import stopwords # Import the stop word list
+from sklearn.pipeline import Pipeline
+from nltk.corpus import stopwords 
 import nltk.data 
 from sklearn.utils import shuffle
-from nltk.stem.snowball import FrenchStemmer
-from sklearn.feature_extraction.text import CountVectorizer
 import nltk.stem
-from sklearn.decomposition import TruncatedSVD
 
 train = pd.read_csv('train_data.csv',sep=';',
-                    dtype={'Identifiant_Produit': int, 'prix': str, 'Produit_Cdiscount': str,'Marque':str,'Libelle':str,'Description':str
-                            ,'Categorie1':str,'Categorie2':str,'Categorie3':str})
+                    dtype={'Identifiant_Produit': int, 'prix': str
+                            ,'Produit_Cdiscount': str,'Marque':str
+                            ,'Libelle':str,'Description':str,'Categorie1':str
+                            ,'Categorie2':str,'Categorie3':str})
         
 test = pd.read_csv('test_data_final.csv',sep=';',
-                   dtype={'Identifiant_Produit': int, 'prix': str, 'Produit_Cdiscount': str,'Marque':str,'Libelle':str,'Description':str})
+                   dtype={'Identifiant_Produit': int, 'prix': str
+                           ,'Produit_Cdiscount': str,'Marque':str
+                           ,'Libelle':str,'Description':str})
 
 test['Categorie1'] = np.nan
 test['Categorie2'] = np.nan
@@ -49,7 +49,6 @@ print(tooBigPrice3.shape)
 
 #%%
 print(data.dtypes)
-#train = train.drop(['prix'],axis=1)
 marquesNull = data['Marque'].loc[data['Marque']!=data['Marque']].shape
 libellesNull = data['Libelle'].loc[data['Libelle']!=data['Libelle']].shape
 descriptionsNull = data['Description'].loc[data['Description']!=data['Description']].shape
@@ -77,7 +76,10 @@ class StemmedCountVectorizer(CountVectorizer):
         analyzer = super(StemmedCountVectorizer, self).build_analyzer()
         return lambda doc: ([french_stemmer.stem(w) for w in analyzer(doc)])
 
-vectorizer_s = StemmedCountVectorizer(ngram_range=(1, 2),min_df=3, analyzer="word", stop_words= stopwords.words("french"),tokenizer=LemmaTokenizer())
+vectorizer_s = StemmedCountVectorizer(ngram_range=(1, 2),min_df=3
+                                     ,analyzer="word"
+                                     , stop_words= stopwords.words("french")
+                                     ,tokenizer=LemmaTokenizer())
     
 #apply 
 data['Marque'].fillna(value='',inplace=True)
@@ -96,7 +98,6 @@ X_train, X_valid, y_train, y_valid = train_test_split(X_, y_, test_size=.2, rand
 
 text_clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 2),min_df=5, stop_words= stopwords.words("french") )), #vectorizer_s ),
                      ('tfidf', TfidfTransformer(use_idf=True)),
-                     #('pca',TruncatedSVD(n_components=100)),
                      ('clf', SGDClassifier(loss='hinge', penalty='l2',
                                            alpha=1e-3, random_state=42,
                                            max_iter=10, tol=None))])
@@ -107,15 +108,12 @@ predicted_SVM = text_clf.predict(X_test)
 print("SVM part, metrics on test set:")
 print(metrics.classification_report(y_test, predicted_SVM))
 
-#from sklearn.model_selection import GridSearchCV
-#parameters = {'clf__max_iter':(5,10,15),
-#              }
-##'vect__ngram_range': [(1, 1), (1, 2)],
-##              'tfidf__use_idf': (True, False),
-##              'clf__alpha': (1e-2, 1e-3),
-#gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
-#gs_clf = gs_clf.fit(X_train, y_train)
-#print(gs_clf.best_score_) 
+from sklearn.model_selection import GridSearchCV
+parameters = {'clf__max_iter':(5,10,15),
+              }
+gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
+gs_clf = gs_clf.fit(X_train, y_train)
+print(gs_clf.best_score_) 
 
 #%%
 X_to_predict = data[['Text','Categorie3']].loc[data['Categorie3'].isnull()].drop(['Categorie3'],axis=1).values.reshape((-1,))

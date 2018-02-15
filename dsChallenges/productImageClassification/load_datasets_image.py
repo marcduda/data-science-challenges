@@ -7,10 +7,6 @@ Created on Wed Oct 12 13:43:30 2016
 import numpy as np
 import os
 from scipy import ndimage, misc
-#from six.moves import cPickle as pickle
-#from six.moves import range
-#from IPython.display import display, Image
-#import matplotlib.pyplot as plt
 import math
 from PIL import Image as Img
 #%% load the images of each folder and make them square
@@ -28,8 +24,8 @@ def make_square(im_direct,fill_color=(1,1,1)):
 def load_image(folder, min_num_images):
   """Load the data for a single label."""
   image_files = os.listdir(folder)
-  dataset = np.ndarray(shape=(len(image_files), image_size, image_size,pixel_depth),
-                         dtype=np.float32)#channels last format 
+  dataset = np.ndarray(shape=(len(image_files), image_size, 
+                              image_size,pixel_depth),dtype=np.float32)
   label = np.ndarray(shape=(len(image_files),1),dtype=np.dtype(('U10', 1))  )
   print(folder)
   num_images = 0

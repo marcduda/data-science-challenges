@@ -8,15 +8,9 @@ Created on Sun Nov  5 11:30:40 2017
 
 import scipy.io.wavfile
 from scipy import signal
-import soundfile as sf
 import os
-import matplotlib.pyplot as plt
 import json
 import numpy as np
-import pylab
-from pywt import WaveletPacket
-import pywt
-from statsmodels.nonparametric.smoothers_lowess import lowess
 
 def merge_intervals(intervals):
     s = sorted(intervals, key=lambda t: t[0])
@@ -40,7 +34,7 @@ global_dataset = None
 
 
 level1 = None
-for file in wav_files:#[:100]
+for file in wav_files:
     print("processing file number "+str(wav_files.index(file)+1)+" on "+str(len(wav_files)))
     file_num = file.split(".")[0]
     rate,data = scipy.io.wavfile.read("vad_data/"+file)
@@ -48,15 +42,12 @@ for file in wav_files:#[:100]
     time_raw = np.arange(len(data)) / float(rate)
     noise = np.random.normal(scale=np.sqrt(noise_power), size=time_raw.shape)
     data = data+noise
-    #filtered = lowess(data, time, is_sorted=True, frac=0.4)
-    #filtered = boxcar(data, (40,), mode="nearest")
 
     json_file = json.loads(open("vad_data/"+file_num+".json").read())['speech_segments']
     speech_intervals = [(dict['start_time'],dict['end_time']) for dict in json_file]
     speech_intervals = merge_intervals(speech_intervals)
     speech_intervals = [(round(intervals[0]*rate),round(intervals[1]*rate)) for intervals in speech_intervals]
     f, t, Zxx = signal.stft(data, rate)
-#    coef, freqs = pywt.cwt(data, np.arange(1,10),'mexh',sampling_period=1/rate)
     window_cwt = int(0.02*rate)
     window_stft = 3
     window_raw = int(0.02*rate)
@@ -66,8 +57,8 @@ for file in wav_files:#[:100]
     intervals_time = [(a*rate,b*rate) for (a,b) in intervals_time]
     data_file = None
     j=0
-    power = np.abs(Zxx * np.conj(Zxx))#coef#data
-    for (start,end) in intervals_time:#intervals_time
+    power = np.abs(Zxx * np.conj(Zxx))
+    for (start,end) in intervals_time:
         speech_label_found = False
         label = 0
         i=0

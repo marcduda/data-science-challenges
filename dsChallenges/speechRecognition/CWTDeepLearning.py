@@ -29,7 +29,6 @@ X_train = np.reshape(X_train2D,(m,n*p))
 (i,j,k,l)=X_test2D.shape
 X_test = np.reshape(X_test2D,(i,j*k))
 
-#%%
 lb = LabelBinarizer()
 y_encoded = lb.fit_transform(y_train)
 
@@ -56,7 +55,8 @@ model_dl.fit(X_train, y_binary_train, epochs=20, batch_size=2000,class_weight = 
 scores = model_dl.evaluate(X_test, y_binary_test)
 print("\n%s: %.2f%%" % (model_dl.metrics_names[1], scores[1]*100))  
 
-#predict the labels of the test set and print some metrics to compare it with the correct labels
+#predict the labels of the test set and print some metrics 
+#to compare it with the correct labels
 predictions = model_dl.predict(X_test)
 prediction_binary = [i for i in np.argmax(predictions,1)]
 print("CWT DL part, metrics on test set:")
@@ -90,10 +90,11 @@ model_cnn1D.fit(np.reshape(X_train,(X_train.shape[0],X_train.shape[1],1)), y_bin
 
 # evaluate the model
 scores_cnn = model_cnn1D.evaluate(np.reshape(X_test,(X_test.shape[0],X_test.shape[1],1)), y_binary_test, verbose=1)
-print("\n%s: %.2f%%" % (model_cnn1D.metrics_names[1], scores_cnn[1]*100))  #, y_test
+print("\n%s: %.2f%%" % (model_cnn1D.metrics_names[1], scores_cnn[1]*100))  
 
 
-#predict the labels of the test set and print some metrics to compare it with the correct labels
+#predict the labels of the test set and print some metrics 
+#to compare it with the correct labels
 predictions_cnn = model_cnn1D.predict(np.reshape(X_test,(X_test.shape[0],X_test.shape[1],1)))
 prediction_binary_cnn = [i for i in np.argmax(predictions_cnn,1)]
 print("CWT 1D CNN part, metrics on test set:")
@@ -104,11 +105,9 @@ print(roc_auc_score(y_test, prediction_binary_cnn))
 
 #%% Third architecture : two-dimensional convolutional layers
 
-class_weight_cnn = {0:3, 1:1}#65
+class_weight_cnn = {0:3, 1:1}
 model_cnn = Sequential()
 
-#, kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None
-#, kernel_constraint=None, bias_constraint=None)
 
 model_cnn.add(Conv2D(filters=5, kernel_size=(3,20), strides=5, padding='same',data_format='channels_last', dilation_rate=1, activation='relu'
 , use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros',input_shape=(n, p,1)))
@@ -128,14 +127,15 @@ model_cnn.add(Dense(2, activation='softmax'))
 model_cnn.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Fit the model
-model_cnn.fit(np.reshape(X_train2D,(m,n,p,1)), y_binary_train, epochs=20, batch_size=1000,class_weight = class_weight_cnn)#
+model_cnn.fit(np.reshape(X_train2D,(m,n,p,1)), y_binary_train, epochs=20, batch_size=1000,class_weight = class_weight_cnn)
 
 # evaluate the model
 scores_cnn = model_cnn.evaluate(np.reshape(X_test2D,(i,j,k,1)), y_binary_test, verbose=1)
-print("\n%s: %.2f%%" % (model_cnn.metrics_names[1], scores_cnn[1]*100))  #, y_test
+print("\n%s: %.2f%%" % (model_cnn.metrics_names[1], scores_cnn[1]*100)) 
 
 
-#predict the labels of the test set and print some metrics to compare it with the correct labels
+#predict the labels of the test set and print some metrics 
+#to compare it with the correct labels
 predictions_cnn = model_cnn.predict(np.reshape(X_test2D,(i,j,k,1)) )
 prediction_binary_cnn = [i for i in np.argmax(predictions_cnn,1)]
 print("CWT 2D CNN part, metrics on test set:")

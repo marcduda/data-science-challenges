@@ -8,9 +8,7 @@ Created on Sat Oct  7 15:25:04 2017
 
 import numpy as np
 from scipy.signal import wavelets
-#from scipy import signal
 import matplotlib.pyplot as plt
-#from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 
 #load data
@@ -20,7 +18,7 @@ y = data[:,1]
 
 #compute fft of the signal
 DATA = np.fft.fft(y)
-print(argmax(DATA))
+print(np.argmax(DATA))
 #%%
 
 
@@ -35,10 +33,10 @@ plt.scatter(x,1.6*morlet)
 plt.show
 
 print(r2_score(1.6*morlet, y))
-print(sqrt(sum(pow(1.6*morlet-y,2))))
+print(np.sqrt(sum(pow(1.6*morlet-y,2))))
 #%%
 DATA1 = np.fft.fft(1.6*morlet)
-print(argmax(DATA1.real))
+print(np.argmax(DATA1.real))
 plt.plot(DATA1.real)
 res = DATA1.real
 

@@ -11,7 +11,6 @@ import os
 import matplotlib.pyplot as plt
 import csv
 import numpy as np
-import matplotlib.patches as patches
 import re
 import enchant
 
@@ -44,7 +43,7 @@ for file in files:
             ocr_txt.iloc[i, ocr_txt.columns.get_loc('paragraphe')]=paragraphe
 
 list_all_paragraphe_filtered = [para for para in list_all_paragraphe if len(para)>20] 
- #%% try to use NMF and LDA to find the number of topics and thus the number of cluster
+ #%%Use NMF and LDA to find the number of topics and thus the number of cluster
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 from nltk.corpus import stopwords # Import the stop word list
@@ -146,9 +145,9 @@ print("done with doc2vec")
 model_doc.save('my_model_complete_data.doc2vec')
 
 #%%Do a dimension reduction on the data to see if it influences the clustering
-from sklearn.cluster import k_means,KMeans,SpectralClustering
+from sklearn.cluster import KMeans,SpectralClustering
 from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_samples, silhouette_score
+from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import normalize
 sentences_vec = [model_doc.docvecs[label] for label in labels]
 sentences_vec = normalize(sentences_vec)
