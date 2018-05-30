@@ -4,6 +4,9 @@ Created on Sun Feb 19 14:30:14 2017
 
 @author: marc
 """
+# The data appear to be quite clean and have a lot of categorical data.
+# The effect of each feature on the churn was priorly analysed with Tableau.
+
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
